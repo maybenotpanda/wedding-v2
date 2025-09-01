@@ -19,6 +19,7 @@
 	},
 	"scripts": {
 		"start": "cp .env.development .env && react-scripts start",
+		"build": "react-scripts build",
 		"build:dev": "cp .env.staging .env && react-scripts build",
 		"build:prod": "cp .env.production .env && react-scripts build",
 		"test": "react-scripts test",
