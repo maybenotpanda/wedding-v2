@@ -13,10 +13,10 @@ const LocationPage = () => {
 				<h1 className="font-header text-center text-[#865D3D] text-5xl">Mw & Reza</h1>
 				<h4 className="text-center text-[#545454]">Lokasi Acara :</h4>
 				<div className="grid gap-5">
-					<a href="#" className="bg-[#0D2C46] text-white text-center py-2 static">
+					<a href="https://maps.app.goo.gl/FsAESiQC7XRW1Whe7" className="bg-[#0D2C46] text-white text-center py-2 static">
 						<h6>Akad</h6>
 					</a>
-					<a href="#" className="bg-[#0D2C46] text-white text-center py-2 static">
+					<a href="https://maps.app.goo.gl/WrvbPF5qC925nWaY9" className="bg-[#0D2C46] text-white text-center py-2 static">
 						<h6>Resepsi</h6>
 					</a>
 				</div>
