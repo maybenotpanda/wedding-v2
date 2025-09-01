@@ -2,29 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
+/* add new style font */
+@font-face {
+	font-family: 'MyFont';
+	src: local('MyFont'), url('./assets/font/Peristiwa.otf') format('opentype');
+}
+
+.font-header {
+	font-family: 'MyFont', sans-serif;
+}
+
 @layer base {
-  h1 {
-    @apply text-4xl;
-  }
-  h2 {
-    @apply text-3xl;
-  }
-  h3 {
-    @apply text-2xl;
-  }
-  h4 {
-    @apply text-xl;
-  }
-  h5 {
-    @apply text-lg;
-  }
-  h6 {
-    @apply text-base;
-  }
-  p {
-    @apply text-sm;
-  }
-  span {
-    @apply text-xs;
-  }
+	h1 {
+		@apply text-4xl;
+	}
+	h2 {
+		@apply text-3xl;
+	}
+	h3 {
+		@apply text-2xl;
+	}
+	h4 {
+		@apply text-xl;
+	}
+	h5 {
+		@apply text-lg;
+	}
+	h6 {
+		@apply text-base;
+	}
+	p {
+		@apply text-sm;
+	}
+	span {
+		@apply text-xs;
+	}
+}
+
+/* animation */
+@keyframes moveImageRight {
+	0% {
+		transform: scale(1) translateX(0);
+	}
+	25% {
+		transform: scale(1) translateX(5px);
+	}
+	50% {
+		transform: scale(1) translateX(10px);
+	}
+	75% {
+		transform: scale(1) translateX(5px);
+	}
+	100% {
+		transform: scale(1) translateX(0);
+	}
+}
+
+@keyframes moveImageRight2 {
+	0% {
+		transform: scale(1) translateY(0);
+	}
+	50% {
+		transform: scale(1) translateY(5px);
+	}
+	100% {
+		transform: scale(1) translateY(0);
+	}
+}
+
+@keyframes moveImageLeft {
+	0% {
+		transform: scale(1) translateX(0);
+	}
+	25% {
+		transform: scale(1) translateX(-5px);
+	}
+	50% {
+		transform: scale(1) translateX(-10px);
+	}
+	75% {
+		transform: scale(1) translateX(-5px);
+	}
+	100% {
+		transform: scale(1) translateX(0);
+	}
+}
+
+@keyframes moveImageLeft2 {
+	0% {
+		transform: scale(1) translateY(0);
+	}
+	50% {
+		transform: scale(1) translateY(5px);
+	}
+	100% {
+		transform: scale(1) translateY(0);
+	}
+}
+
+.image-right img {
+	animation: moveImageRight 5s linear infinite;
+}
+
+.image-left img {
+	animation: moveImageLeft 5s linear infinite;
+}
+
+.image-right2 img {
+	animation: moveImageRight2 5s linear infinite;
+}
+
+.image-left2 img {
+	animation: moveImageLeft2 5s linear infinite;
 }
