@@ -15,7 +15,7 @@ module.exports = {
 				secondary: '',
         background: '',
         black: '',
-        white: '',
+        white: '#FFF',
 				success: {
           70: "#317159",
           60: "#429777",
