@@ -1,11 +1,8 @@
 // ** React Imprts
-import React from "react"
-
-// ** Template Imports
-import Template from './template'
+import React from 'react'
 
 const HomePage = () => {
-	return <Template />
+	return <></>
 }
 
 export default HomePage
