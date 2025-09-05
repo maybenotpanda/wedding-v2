@@ -8,8 +8,17 @@
 	src: local('MyFont'), url('./assets/font/Peristiwa.otf') format('opentype');
 }
 
+@font-face {
+	font-family: 'fontDescription';
+	src: local('fontDescription'), url('./assets/font/Analogist.ttf') format('truetype');
+}
+
 .font-header {
 	font-family: 'MyFont', sans-serif;
+}
+
+.font-description {
+	font-family: 'fontDescription', sans-serif;
 }
 
 @layer base {

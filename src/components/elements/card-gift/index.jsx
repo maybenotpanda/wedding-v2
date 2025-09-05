@@ -6,6 +6,7 @@ import { message } from 'antd'
 
 // ** Assets Imports
 import chip from 'assets/images/chip-atm.png'
+import background from 'assets/images/bg-account.png'
 
 const CardGift = (props) => {
 	const handleCopy = useCallback((accountNumber) => {
@@ -18,14 +19,16 @@ const CardGift = (props) => {
 				message.error('Gagal menyalin nomor rekening')
 			})
 	}, [])
+
 	return (
-		<div className="grid gap-4">
+		<div className="grid gap-4 px-4">
 			{props.data.map((data, index) => (
 				<div
-					className="p-4 bg-background rounded-3xl shadow-sm w-full relative bg-slate-50"
+					className="p-4 rounded-3xl shadow-sm w-full relative bg-cover bg-center"
 					key={index}
 					data-aos="fade-up"
-					data-aos-duration="1500">
+					data-aos-duration="1500"
+					style={{ backgroundImage: `url(${background})` }}>
 					{data.type === 'bank' ? (
 						<>
 							<img
@@ -37,7 +40,7 @@ const CardGift = (props) => {
 								<img alt="testing" src={`assets/accounts/${data.account}.png`} className="w-24 my-2 justify-self-end" />
 								<img src={chip} alt="chip" className="w-8" />
 								<span></span>
-								<h6>{data.accountNumber}</h6>
+								<h6 className="font-bold">{data.accountNumber}</h6>
 								<h7>{data.accountName}</h7>
 								<div className="flex justify-end">
 									<button
@@ -49,7 +52,7 @@ const CardGift = (props) => {
 							</div>
 						</>
 					) : (
-						<div className='text-center'>
+						<div className="text-center">
 							<h6>Nama Penerima : {data.accountName}</h6>
 							<h6>Nomor : {data.phoneNumber}</h6>
 							<h6>Alamat : {data.address}</h6>
