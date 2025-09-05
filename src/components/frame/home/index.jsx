@@ -1,5 +1,5 @@
 // ** React Imports
-import React from 'react'
+import React, { Fragment } from 'react'
 
 // ** Fragments Imports
 import GiftFragments from 'components/fragments/gift'
@@ -7,16 +7,29 @@ import CountdownTimer from 'components/fragments/countdown'
 import MainEvent from 'components/fragments/main-events'
 import AboutUs from 'components/fragments/about-us'
 import ThankYouFragments from 'components/fragments/thank-you'
+import OurStore from 'components/fragments/our-store'
+import Form from 'components/fragments/form'
 
 const HomeFrame = () => {
 	return (
-		<div className="px-4">
-			<AboutUs />
-			<CountdownTimer />
-			<MainEvent data={event} />
-			<GiftFragments data={bank} />
-			<ThankYouFragments />
-		</div>
+		<Fragment>
+			<img
+				className="w-3/5 h-screen object-cover fixed left-0 top-0 z-10 hidden lg:block"
+				src="https://images.pexels.com/photos/851940/pexels-photo-851940.jpeg?_gl=1*1t8xpci*_ga*MTk3MDcxMzU3LjE3NTcwODMxODk.*_ga_8JE65Q40S6*czE3NTcwODMxODkkbzEkZzEkdDE3NTcwODMyMzYkajEzJGwwJGgw"
+			/>
+			<div className="lg:w-2/5 w-full overflow-y-scroll ml-auto z-20">
+				<div className="h-screen"></div>
+				<AboutUs />
+				<CountdownTimer />
+				<OurStore />
+				<MainEvent data={event} />
+				<div className='grid gap-3 bg-background py-2'>
+					<GiftFragments data={bank} />
+					<Form />
+				</div>
+				<ThankYouFragments />
+			</div>
+		</Fragment>
 	)
 }
 
@@ -28,6 +41,7 @@ const event = [
 		date: 'Jumat, 03 Oktober 2025',
 		time: '07:00',
 		location: 'Masjid Al-Jihad',
+		dressCode: 'Putih',
 		maps: 'https://maps.app.goo.gl/FsAESiQC7XRW1Whe7'
 	},
 	{
@@ -35,15 +49,16 @@ const event = [
 		date: 'Sabtu, 04 Oktober 2025',
 		time: '10:00',
 		location: 'Gedung Gelanggang USU',
+		dressCode: 'Cream atau Batik',
 		maps: 'https://maps.app.goo.gl/WrvbPF5qC925nWaY9'
-	},
-	{
-		name: 'Akad Nikah',
-		date: 'Minggu, 05 Oktober 2025',
-		time: '10:00',
-		location: 'Rumah Orang Tua Mempelai Pria',
-		maps: ''
 	}
+	// {
+	// 	name: 'Akad Nikah',
+	// 	date: 'Minggu, 05 Oktober 2025',
+	// 	time: '10:00',
+	// 	location: 'Rumah Orang Tua Mempelai Pria',
+	// 	maps: ''
+	// }
 ]
 
 const bank = [

@@ -5,7 +5,7 @@ import React from 'react'
 import Frame from 'components/frame/home'
 
 const HomePage = () => {
-	return <Frame />
+	return <><Frame /></>
 }
 
 export default HomePage
