@@ -10,14 +10,18 @@ import ThankYouFragments from 'components/fragments/thank-you'
 import OurStore from 'components/fragments/our-store'
 import Form from 'components/fragments/form'
 
+// ** Assets Imports
+import background from 'assets/images/background.jpg'
+
 const HomeFrame = () => {
 	return (
 		<Fragment>
 			<img
-				className="w-3/5 h-screen object-cover fixed left-0 top-0 z-10 hidden lg:block"
-				src="https://images.pexels.com/photos/851940/pexels-photo-851940.jpeg?_gl=1*1t8xpci*_ga*MTk3MDcxMzU3LjE3NTcwODMxODk.*_ga_8JE65Q40S6*czE3NTcwODMxODkkbzEkZzEkdDE3NTcwODMyMzYkajEzJGwwJGgw"
+				className="w-3/5 h-screen object-cover fixed left-0 top-0 z-10 hidden lg:block bg-top"
+				src={background}
+				alt="Background"
 			/>
-			<div className="lg:w-2/5 w-full overflow-y-scroll ml-auto z-20">
+			<div className="lg:w-2/5 w-full overflow-y-scroll ml-auto z-20 bg-background">
 				<div className="h-screen"></div>
 				<AboutUs />
 				<CountdownTimer />
