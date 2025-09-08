@@ -1,5 +1,5 @@
 import Head from 'components/elements/head'
-import React, { Fragment } from 'react'
+import React from 'react'
 
 const OurStore = () => {
 	return (
