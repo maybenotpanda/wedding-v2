@@ -14,7 +14,7 @@ const GiftFragments = (props) => {
 	const [showGift, setShowGift] = useState(false)
 
 	return (
-		<Fragment>
+		<div className="bg-primary py-6">
 			<Head
 				title="Wedding Gift"
 				description="Bagi Bapak/Ibu/Sudara/i yang ingin mengirimkan hadiah pernikahan dapat melalui virtual accout atau e-wallet di bawah
