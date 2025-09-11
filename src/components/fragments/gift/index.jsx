@@ -12,6 +12,7 @@ const GiftFragments = (props) => {
 	// ! hooks
 	// * state
 	const [showGift, setShowGift] = useState(false)
+
 	return (
 		<Fragment>
 			<Head
