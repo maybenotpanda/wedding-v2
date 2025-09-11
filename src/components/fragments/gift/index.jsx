@@ -9,6 +9,8 @@ import CardGift from 'components/elements/card-gift'
 import Head from 'components/elements/head'
 
 const GiftFragments = (props) => {
+	// ! hooks
+	// * state
 	const [showGift, setShowGift] = useState(false)
 	return (
 		<Fragment>
