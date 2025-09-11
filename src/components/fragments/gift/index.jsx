@@ -21,11 +21,29 @@ const GiftFragments = (props) => {
 				ini:"
 				color="white"
 			/>
-			<button className="bg-primary py-2 w-full px-4" onClick={() => setShowGift(!showGift)}>
+			<div className="grid px-4 gap-4 justify-items-center pt-4">
+				<button
+					className="bg-white py-2 text-center text-primary rounded-md w-44"
+					data-aos="fade-up"
+					data-aos-duration="600"
+					onClick={() => setShowGift(!showGift)}>
 				{showGift ? 'Sembunyikan Gift' : 'Klik Disini'}
 			</button>
-			{showGift && <CardGift data={props.data} />}
-		</Fragment>
+				<AnimatePresence>
+					{showGift && (
+						<motion.div
+							key="gift"
+							initial={{ opacity: 0, y: -20, height: 0 }}
+							animate={{ opacity: 1, y: 0, height: 'auto' }}
+							exit={{ opacity: 0, y: -20, height: 0 }}
+							transition={{ duration: 0.4, ease: 'easeInOut' }}
+							className="overflow-hidden w-full">
+							<CardGift data={props.data} />
+						</motion.div>
+					)}
+				</AnimatePresence>
+			</div>
+		</div>
 	)
 }
 
