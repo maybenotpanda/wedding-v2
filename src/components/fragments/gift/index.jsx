@@ -14,7 +14,7 @@ const GiftFragments = (props) => {
 	const [showGift, setShowGift] = useState(false)
 
 	return (
-		<div className="bg-primary py-6">
+		<div className="py-6 grid gap-2">
 			<Head
 				title="Wedding Gift"
 				description="Bagi Bapak/Ibu/Sudara/i yang ingin mengirimkan hadiah pernikahan dapat melalui virtual accout atau e-wallet di bawah
@@ -27,8 +27,8 @@ const GiftFragments = (props) => {
 					data-aos="fade-up"
 					data-aos-duration="600"
 					onClick={() => setShowGift(!showGift)}>
-				{showGift ? 'Sembunyikan Gift' : 'Klik Disini'}
-			</button>
+					{showGift ? 'Sembunyikan Gift' : 'Klik Disini'}
+				</button>
 				<AnimatePresence>
 					{showGift && (
 						<motion.div
