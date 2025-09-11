@@ -1,5 +1,8 @@
 // ** React Imports
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
+
+// ** Framer
+import { motion, AnimatePresence } from 'framer-motion'
 
 // ** Elements Imports
 import CardGift from 'components/elements/card-gift'
