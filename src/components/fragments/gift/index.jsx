@@ -19,6 +19,7 @@ const GiftFragments = (props) => {
 				title="Wedding Gift"
 				description="Bagi Bapak/Ibu/Sudara/i yang ingin mengirimkan hadiah pernikahan dapat melalui virtual accout atau e-wallet di bawah
 				ini:"
+				color="white"
 			/>
 			<button className="bg-primary py-2 w-full px-4" onClick={() => setShowGift(!showGift)}>
 				{showGift ? 'Sembunyikan Gift' : 'Klik Disini'}
