@@ -1,7 +1,14 @@
 // ** React Imports
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+// import Snowfall from 'react-snowfall'
+
+// ** Store Imports
+import { dataDetailGuest, loadingDetailGuest } from 'config/store/modules/guest/selector'
+import { createMessage } from 'config/store/modules/messages/actions'
 
 // ** Fragments Imports
+import Cover from 'components/fragments/cover'
 import GiftFragments from 'components/fragments/gift'
 import CountdownTimer from 'components/fragments/countdown'
 import MainEvent from 'components/fragments/main-events'
@@ -12,28 +19,92 @@ import Form from 'components/fragments/form'
 
 // ** Assets Imports
 import background from 'assets/images/background.jpg'
+import bgHome from 'assets/images/backgorud-home.jpg'
+import cloud from 'assets/images/cloud.png'
 
 const HomeFrame = () => {
-	return (
+	const [isCover, setIsCover] = useState(true)
+	const [closed, setClosed] = useState(false);
+	const dispatch = useDispatch()
+	// const errDetail = useSelector(errorDetailGuest)
+	const dataDetail = useSelector(dataDetailGuest)
+	const loadData = useSelector(loadingDetailGuest)
+
+	return loadData ? "" : (
 		<Fragment>
 			<img
 				className="w-3/5 h-screen object-cover fixed left-0 top-0 z-10 hidden lg:block bg-top"
 				src={background}
 				alt="Background"
 			/>
-			<div className="lg:w-2/5 w-full overflow-y-scroll ml-auto z-20 bg-background">
-				<div className="h-screen"></div>
+			<div className="relative">
+				<div className="fixed inset-0 pointer-events-none z-10">
+					{/*<Snowfall
+						snowflakeCount={200}
+						color="#e8e8e8"
+						speed={[0.5, 1.5]}
+						wind={[0.5, 3]}
+					/>*/}
+				</div>
+				<Cover name={dataDetail.name} isCover={isCover} setIsCover={setIsCover} />
+				<div className="lg:w-2/5 w-full overflow-y-scroll ml-auto z-20 bg-background">
+					<div className="h-screen bg-fixed bg-center bg-cover grid justify-items-center content-center" style={{ backgroundImage: `url(${bgHome})` }}>
+						<div className="window relative">
+							<div
+								className={`${isCover ? "" : "top"} ${closed ? "closed" : ""}}`}
+							onClick={() => setClosed(!closed)}
+							></div>
+						<div className="glass">
+							<div className="sky">
+								<div className="cloud" />
+								<div className="cloud" />
+								<div className="cloud" />
+								<div className="cloud" />
+								<div className="cloud" />
+								<div className="cloud" />
+								<div className="window-text">
+									<h1 className='text-black text-center font-header'>MW</h1>
+									<h4 className='text-black text-center font-header'>&</h4>
+									<h1 className='text-black text-center font-header'>Reza</h1>
+								</div>
+								<div className="nyan-cat" />
+							</div>
+						</div>
+					</div>
+					<div className="image-right2">
+						<img
+							src={cloud}
+							alt="cloud"
+							className="absolute top-28 -left-10 w-44 h-auto"
+						/>
+					</div>
+					<div className="image-right">
+						<img
+							src={cloud}
+							alt="cloud"
+							className="absolute left-8 w-44 h-auto"
+						/>
+					</div>
+					<div className="image-left">
+						<img
+							src={cloud}
+							alt="cloud"
+							className="absolute -right-12 w-56 top-[42rem] h-auto"
+						/>
+					</div>
+				</div>
 				<AboutUs />
-				<CountdownTimer />
+				<CountdownTimer type={dataDetail.type} />
+				<MainEvent data={event} type={dataDetail.type} />
 				<OurStore />
-				<MainEvent data={event} />
-				<div className='grid gap-3 bg-background py-2'>
+				<div className='grid gap-3 bg-primary'>
 					<GiftFragments data={bank} />
-					<Form />
+					<Form data={(e) => dispatch(createMessage({ ...e, guest_id: dataDetail.uuid }))} />
 				</div>
 				<ThankYouFragments />
 			</div>
-		</Fragment>
+		</div>
+		</Fragment >
 	)
 }
 
@@ -55,14 +126,14 @@ const event = [
 		location: 'Gedung Gelanggang USU',
 		dressCode: 'Cream atau Batik',
 		maps: 'https://maps.app.goo.gl/WrvbPF5qC925nWaY9'
+	},
+	{
+		name: 'Unduh Mantu',
+		date: 'Minggu, 05 Oktober 2025',
+		time: '10:00',
+		location: 'Rumah Orang Tua Mempelai Pria',
+		maps: ''
 	}
-	// {
-	// 	name: 'Akad Nikah',
-	// 	date: 'Minggu, 05 Oktober 2025',
-	// 	time: '10:00',
-	// 	location: 'Rumah Orang Tua Mempelai Pria',
-	// 	maps: ''
-	// }
 ]
 
 const bank = [
@@ -74,7 +145,7 @@ const bank = [
 	},
 	{
 		type: 'home',
-		address: 'Jl. Belakang Pasar Baru I No.(Lupa), Joyfull Kost, Pasar Baru, Jakarta Pusat',
+		address: 'Jl. Belakang Pasar Baru I No.23, Joyfull Kost, Pasar Baru, Jakarta Pusat',
 		accountName: 'MW Putri',
 		phoneNumber: '081362223600'
 	}
