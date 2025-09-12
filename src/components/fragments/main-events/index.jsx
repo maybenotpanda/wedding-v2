@@ -7,7 +7,7 @@ import Head from 'components/elements/head'
 
 const MainEvent = (props) => {
 	return (
-		<div className="h-screen py-2 grid justify-items-center content-center bg-primary">
+		<div className={`${props.type === "Keluarga" || props.type === "VIP" ? 'py-20' : 'h-screen'} py-2 grid justify-items-center content-center bg-primary`}>
 			<div className="grid gap-4">
 				<Head
 					title="Wedding Schedule"
