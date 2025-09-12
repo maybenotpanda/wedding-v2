@@ -9,7 +9,7 @@ const Page404 = lazy(() => import('../../pages/404'))
 const RoutePage = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<HomePage />} />
+			<Route path=":slug" element={<HomePage />} />
 			<Route path="/location" element={<LocationPage />} />
 			<Route path='/makasih' element={<ThankYouPages />}/>
 			<Route path="*" element={<Page404 />} />
