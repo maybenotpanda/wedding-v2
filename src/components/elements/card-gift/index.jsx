@@ -1,5 +1,5 @@
 // ** React Imports
-import React, { useCallback } from 'react'
+import React, { Fragment, useCallback } from 'react'
 
 // ** Antd Imports
 import { message } from 'antd'
@@ -21,16 +21,19 @@ const CardGift = (props) => {
 	}, [])
 
 	return (
-		<div className="grid gap-4 px-4">
+		<div className="grid gap-4">
 			{props.data.map((data, index) => (
 				<div
-					className="p-4 rounded-3xl shadow-sm w-full relative bg-cover bg-center"
+					className="p-4 rounded-2xl shadow-sm w-full relative bg-cover bg-center bg-[#F6F6F6]"
 					key={index}
-					data-aos="fade-up"
-					data-aos-duration="1500"
-					style={{ backgroundImage: `url(${background})` }}>
+					data-aos="zoom-in-down"
+					data-aos-duration="800"
+					style={{
+						backgroundImage: data.type === "home" ? "none" : `url(${background})`,
+					}}
+				>
 					{data.type === 'bank' ? (
-						<>
+						<Fragment>
 							<img
 								className="w-44 opacity-25 absolute bottom-4 left-4"
 								src={`assets/accounts/${data.account}.png`}
@@ -40,17 +43,17 @@ const CardGift = (props) => {
 								<img alt="testing" src={`assets/accounts/${data.account}.png`} className="w-24 my-2 justify-self-end" />
 								<img src={chip} alt="chip" className="w-8" />
 								<span></span>
-								<h6 className="font-bold">{data.accountNumber}</h6>
-								<h7>{data.accountName}</h7>
+								<h5 className="font-bold">{data.accountNumber}</h5>
+								<h6>{data.accountName}</h6>
 								<div className="flex justify-end">
 									<button
-										className="bg-primary text-white py-1 px-2 mt-4 rounded-lg hover:bg-transparent hover:text-selected w-fit"
-										onClick={() => handleCopy('08123')}>
+										className="bg-primary w-fit py-1 px-2 mt-3 text-white rounded-md  text-sm"
+										onClick={() => handleCopy(data.accountNumber)}>
 										Copy
 									</button>
 								</div>
 							</div>
-						</>
+						</Fragment>
 					) : (
 						<div className="text-center">
 							<h6>Nama Penerima : {data.accountName}</h6>
