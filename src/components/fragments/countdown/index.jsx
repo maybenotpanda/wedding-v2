@@ -1,103 +1,87 @@
-import React, { Component } from "react";
+// ** React Imports
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
-class CountdownTimer extends Component {
-  constructor(props) {
-    super(props);
-    const targetDate = new Date("2023-12-24T08:00:00");
+// ** Elements Imports
+import TimeBox from "components/elements/time-box";
 
-    this.state = {
-      targetDate: targetDate.getTime(),
-      timeRemaining: {},
-    };
-  }
+const CountdownTimer = ({ type }) => {
+  const times = useMemo(() => ({
+    akad: new Date("2025-10-03T07:00:00").getTime(),
+    resepsi: new Date("2025-10-04T10:00:00").getTime(),
+    unduhMantu: new Date("2025-10-05T10:00:00").getTime(),
+  }), []);
 
-  componentDidMount() {
-    this.updateTimeRemaining();
-    this.interval = setInterval(this.updateTimeRemaining, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  updateTimeRemaining = () => {
-    const currentTime = new Date().getTime();
-    const timeRemaining = this.state.targetDate - currentTime;
-
-    if (timeRemaining <= 0) {
-      clearInterval(this.interval);
-      this.setState({
-        timeRemaining: { days: 0, hours: 0, minutes: 0, seconds: 0 },
-      });
-    } else {
-      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor(
-        (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-      this.setState({ timeRemaining: { days, hours, minutes, seconds } });
+  const getTargetDate = useCallback(() => {
+    const now = Date.now();
+    if (type === "Keluarga" || type === "VIP" || type === "Teman") {
+      if (now < times.akad) return { label: "Akad", date: times.akad };
     }
-  };
+    if (type === "Keluarga" || type === "VIP") {
+      if (now < times.unduhMantu) return { label: "Unduh Mantu", date: times.unduhMantu };
+    }
+    if (now < times.resepsi) return { label: "Resepsi", date: times.resepsi };
 
-  render() {
-    const { days, hours, minutes, seconds } = this.state.timeRemaining;
+    return { label: "Selesai", date: null };
+  }, [type, times])
 
-    return (
-      <div className="justify-between bg-primary py-12">
-        <div className="grid  gap-2 justify-center items-center">
-          <h3
-            className="text-2xl text-center font-serif text-secondary text-title"
-            data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom"
-          >
-            Save The Date
-          </h3>
-          <div className="flex gap-14  text-center">
-            <div
-              className="grid gap-1 items-center"
-              data-aos="fade-up"
-              data-aos-duration="250"
-            >
-              <h3 className="text-3xl text-selected font-serif">{days}</h3>
-              <span className="text-sm text-readOnly">Hari</span>
-            </div>
-            <div
-              className="grid gap-1 items-center"
-              data-aos="fade-up"
-              data-aos-duration="350"
-            >
-              <h3 className="text-3xl text-selected font-serif">{hours}</h3>
-              <span className="text-sm text-readOnly">Jam</span>
-            </div>
-            <div
-              className="grid gap-1 items-center"
-              data-aos="fade-up"
-              data-aos-duration="450"
-            >
-              <h3 className="text-3xl text-selected font-serif">{minutes}</h3>
-              <span className="text-sm text-readOnly">Menit</span>
-            </div>
-            <div
-              className="grid gap-1 items-center"
-              data-aos="fade-up"
-              data-aos-duration="550"
-            >
-              <h3 className="text-3xl text-selected font-serif">{seconds}</h3>
-              <span className="text-sm text-readOnly">Detik</span>
-            </div>
-          </div>
+  const initialTarget = getTargetDate();
+  const [timeRemaining, setTimeRemaining] = useState(
+    calculateTimeRemaining(initialTarget.date)
+  );
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newTarget = getTargetDate();
+      setTimeRemaining(calculateTimeRemaining(newTarget.date));
+    }, 1000);
+
+    return () => clearInterval(interval)
+  }, [getTargetDate])
+
+  const { days, hours, minutes, seconds } = timeRemaining;
+
+  return (
+    <div className="justify-between bg-primary py-12">
+      <div className="grid gap-2 justify-center items-center">
+        <h2
+          className="text-center font-serif text-secondary font-title"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
+        >
+          Save The Date
+        </h2>
+        <div className="flex gap-14 text-center">
+          <TimeBox value={days} label="Hari" delay="250" />
+          <TimeBox value={hours} label="Jam" delay="350" />
+          <TimeBox value={minutes} label="Menit" delay="450" />
+          <TimeBox value={seconds} label="Detik" delay="550" />
         </div>
-        {/* <div className="flex justify-between bottom-0 items-end">
-                    <img alt="testing" src={Jav} className="lg:h-52 sm:h-40 opacity-75" data-aos="fade-down-right" />
-                    <img alt="testing" src={Jav} className="lg:h-52 sm:h-24 lg:block" data-aos="fade-down-left" />
-        </div> */}
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+// helper
+function calculateTimeRemaining(targetDate) {
+  if (!targetDate) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+
+  const now = Date.now();
+  const diff = targetDate - now;
+
+  if (isNaN(diff) || diff <= 0) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+
+  return {
+    days: Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24))),
+    hours: Math.max(0, Math.floor((diff / (1000 * 60 * 60)) % 24)),
+    minutes: Math.max(0, Math.floor((diff / (1000 * 60)) % 60)),
+    seconds: Math.max(0, Math.floor((diff / 1000) % 60)),
+  };
+}
+
 
 export default CountdownTimer;
