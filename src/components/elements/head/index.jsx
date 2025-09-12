@@ -3,7 +3,7 @@ import React from 'react'
 
 const Head = ({ title, description, color }) => {
 	return (
-		<div className="grid gap-1 py-2 px-4">
+		<div className="grid gap-1 px-4">
 			<h2 data-aos="fade-up" className="font-description text-center text-secondary">
 				{title}
 			</h2>
