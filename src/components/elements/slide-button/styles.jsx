@@ -2,8 +2,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-	position: relative;
-	width: 16rem; /* 64 */
+	// width: 16rem; /* 64 */
 	height: 3rem; /* 12 */
 	border-radius: 9999px;
 	overflow: hidden;
@@ -35,7 +34,8 @@ export const Overlay = styled.div`
 
 export const Thumb = styled.div`
 	position: absolute;
-	top: 0.25rem;
+	top: 2.25px;
+	left: 2px;
 	width: 2.5rem;
 	height: 2.5rem;
 	border-radius: 9999px;
