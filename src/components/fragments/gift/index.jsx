@@ -14,7 +14,7 @@ const GiftFragments = (props) => {
 	const [showGift, setShowGift] = useState(false)
 
 	return (
-		<div className="py-6 grid gap-2">
+		<div className="py-6 grid gap-2 bg-primary">
 			<Head
 				title="Wedding Gift"
 				description="Bagi Bapak/Ibu/Sudara/i yang ingin mengirimkan hadiah pernikahan dapat melalui virtual accout atau e-wallet di bawah
