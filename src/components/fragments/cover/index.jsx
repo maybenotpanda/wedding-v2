@@ -1,12 +1,61 @@
 // ** React Imports
 import React, { Fragment, useEffect, useState } from 'react'
 
+import { Howl } from "howler";
+
+import {
+	BsPlayFill,
+	BsFillGridFill,
+	// BsBox2HeartFill,
+	BsFillPauseFill,
+	BsHouseHeartFill,
+	// BsBalloonHeartFill,
+	BsPersonHeart,
+	BsFillCalendarHeartFill,
+} from "react-icons/bs";
+import { IoCloseSharp } from "react-icons/io5";
+
 // ** Assets Imports
 import background from 'assets/images/cover.jpg'
 import SlideButton from 'components/elements/slide-button'
+import music from "assets/music/bandaneira-sampai-jadi-debu.mp3";
 
 const Cover = ({ name, isCover, setIsCover }) => {
 	const [coverAnimation, setCoverAnimation] = useState('')
+	const [isPlaying, setIsPlaying] = useState(true);
+	const [sound, setSound] = useState(null);
+	const [isMenu, setIsMenu] = useState(false);
+
+	useEffect(() => {
+		const newSound = new Howl({
+			src: [music],
+			autoplay: true,
+			onend: () => {
+				setIsPlaying(true);
+			},
+		});
+
+		setSound(newSound);
+
+		return () => {
+			newSound.unload();
+		};
+	}, []);
+
+	const handleMenu = () => {
+		setIsMenu(!isMenu);
+	};
+
+	const handlePlayPause = () => {
+		if (sound) {
+			if (isPlaying) {
+				sound.pause();
+			} else {
+				sound.play();
+			}
+			setIsPlaying(!isPlaying);
+		}
+	};
 
 	useEffect(() => {
 		if (isCover) {
@@ -29,6 +78,16 @@ const Cover = ({ name, isCover, setIsCover }) => {
 		}, 1000)
 	}
 
+	const handleMainMenu = (sectionId) => {
+		const section = document.getElementById(sectionId);
+
+		if (section) {
+			section.scrollIntoView({ behavior: "smooth" });
+		} else {
+			console.error(`Element with ID ${sectionId} not found.`);
+		}
+	};
+
 	return (
 		<Fragment>
 			{isCover ? (
@@ -44,7 +103,7 @@ const Cover = ({ name, isCover, setIsCover }) => {
 						<div className="grid inset-x-0 justify-items-center z-50 gap-3">
 							{name ? (
 								<Fragment>
-									<h6 className="w-full text-center text-white font-serif">Dear To Mr./Mrs./Ms.</h6>
+									<h6 className="w-full text-center text-white font-serif">Dear Mr./Mrs./Ms.</h6>
 									<h5 className="text-secondary italic font-serif font-bold text-center">{name}</h5>
 								</Fragment>
 							) : (
@@ -55,7 +114,82 @@ const Cover = ({ name, isCover, setIsCover }) => {
 					</div>
 				</div>
 			) : (
-				''
+				<>
+					<div
+						className="fixed bottom-0 left-0 mb-2 ml-2"
+						style={{ zIndex: 2 }}
+					>
+						{isMenu ? (
+							<div className="flex gap-2 justify-center items-center">
+								<button
+									className="p-4 bg-primary text-secondary rounded-full"
+									onClick={handleMenu}
+								>
+									<IoCloseSharp />
+								</button>
+								<button
+									className="p-2 bg-selected text-secondary rounded-full text-sm"
+									onClick={() => handleMainMenu("home")}
+								>
+									<BsHouseHeartFill />
+								</button>
+								<button
+									className="p-2 bg-selected text-secondary rounded-full text-sm"
+									onClick={() => handleMainMenu("profile")}
+								>
+									<BsPersonHeart />
+								</button>
+								<button
+									className="p-2 bg-selected text-secondary rounded-full text-sm"
+									onClick={() => handleMainMenu("events")}
+								>
+									<BsFillCalendarHeartFill />
+								</button>
+								{/*
+                <button
+                  className="p-2 bg-selected text-secondary rounded-full text-sm"
+                  onClick={() => handleMainMenu("gift")}
+                >
+                  <BsBox2HeartFill />
+                </button>
+                <button
+                  className="p-2 bg-selected text-secondary rounded-full text-sm"
+                  onClick={() => handleMainMenu("gallery")}
+                >
+                  <BsBalloonHeartFill />
+                </button>
+                */}
+							</div>
+						) : (
+							<button
+								className="p-4 bg-selected text-secondary rounded-full"
+								onClick={handleMenu}
+							>
+								<BsFillGridFill />
+							</button>
+						)}
+					</div>
+					<div
+						className="fixed bottom-0 right-0 mb-2 mr-2"
+						style={{ zIndex: 2 }}
+					>
+						{isPlaying ? (
+							<button
+								className="p-4 bg-primary text-secondary rounded-full"
+								onClick={handlePlayPause}
+							>
+								<BsFillPauseFill />
+							</button>
+						) : (
+							<button
+								className="p-4 bg-selected text-secondary rounded-full"
+								onClick={handlePlayPause}
+							>
+								<BsPlayFill />
+							</button>
+						)}
+					</div>
+				</>
 			)}
 		</Fragment>
 	)
