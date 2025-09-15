@@ -2,22 +2,29 @@
 import React from 'react'
 
 // ** Antd Imports
-import { Input, Form } from 'antd'
+import { Input, Form, Pagination } from 'antd'
 
 // ** Elements Imports
 import Head from 'components/elements/head'
 import Message from 'components/elements/message'
 import styled from 'styled-components'
+import { dataListMessages, errorListMessages, loadingListMessages } from 'config/store/modules/messages/selector'
+import { useSelector } from 'react-redux'
 
 const { TextArea } = Input
 const Wishes = (props) => {
+	const loadList = useSelector(loadingListMessages)
+	const errList = useSelector(errorListMessages)
+	const dataList = useSelector(dataListMessages)
+
 	const { data } = props
 	const handleSubmit = (e) => {
 		const req = { ...e }
 		data(req)
 	}
+
 	return (
-		<div className="h-screen grid gap-3 content-start justify-items-center">
+		<div className="h-screen grid gap-3 content-start justify-items-center bg-primary">
 			<Head title="Wishes" description="Berikan ucapan harapan dan do’a kepada kedua mempelai" color="white" />
 			<div className="px-4 w-full">
 				<div className="bg-secondary rounded-3xl shadow-sm relative px-4 w-full grid gap-4 py-2">
@@ -50,8 +57,26 @@ const Wishes = (props) => {
 							</button>
 						</FormGroup>
 					</Form>
-					<div className="max-h-96 overflow-y-auto pr-2 scrollbar-hide">
-						<Message />
+					<div className="h-[30rem] overflow-y-auto pr-2 scrollbar-hide">
+						{loadList ? 'Loading' : errList ? 'Error' : dataList ? (
+							<Message data={dataList.data} />
+						) : (
+							<div className="flex justify-center h-full items-center">
+								<span className="text-center text-[#545454]">Tidak ada Pesan</span>
+							</div>
+						)}
+					</div>
+					<div className='flex justify-center items-center'>
+						<Pagination
+							current={props.page}
+							pageSize={props.limit}
+							total={dataList.count}
+							showTotal={(total) => `Total ${total} Pesan`}
+							onChange={(newPage, newPageSize) => {
+								props.setPage(newPage);
+								props.setLimit(newPageSize);
+							}}
+						/>
 					</div>
 				</div>
 			</div>
