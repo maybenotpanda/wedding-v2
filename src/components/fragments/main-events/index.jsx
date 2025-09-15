@@ -14,7 +14,7 @@ const MainEvent = (props) => {
 					description="Dan kami bersyukur, dipertemukan allah di waktu terbaik. kini kami menanti hari istimewa kami."
 					color="white"
 				/>
-				<CardEvent data={props.data} />
+				<CardEvent data={props.data} type={props.type} />
 			</div>
 		</div>
 	)

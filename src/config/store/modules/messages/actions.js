@@ -9,6 +9,24 @@ import apiGeneral from 'config/services/api-general'
 import { failureAction, startAction, successAction } from 'config/utils/action'
 
 // ! read
+export const listMessages = ({ page, limit }) => {
+  return async (dispatch) => {
+    dispatch(startAction(ACTION_TYPES.MESSAGES_LIST_START))
+
+    try {
+      const res = await apiGeneral.request({
+        method: 'get',
+        url: `${API_URLS.LIST_MESSAGE}?page=${page}&limit=${limit}`
+      })
+      dispatch(successAction(ACTION_TYPES.MESSAGES_LIST_SUCCESS, res.data))
+    } catch (err) {
+      const message = err.response?.data || 'Unknown error occurred'
+      dispatch(failureAction(ACTION_TYPES.MESSAGES_LIST_FAILED, message))
+    }
+  }
+}
+
+// ! create
 export const createMessage = (req) => {
   return async (dispatch) => {
     dispatch(startAction(ACTION_TYPES.MESSAGE_CREATE_START))

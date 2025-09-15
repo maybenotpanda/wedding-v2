@@ -51,7 +51,7 @@ const SlideButton = ({ onSlide, disabled }) => {
 	return (
 		<Container
 			ref={containerRef}
-			className={`bg-primary ${disabled ? 'opacity-50' : ''}`}
+			className={`bg-primary relative w-60 border-2 ${disabled ? 'opacity-50' : ''}`}
 			onMouseMove={handleMove}
 			onMouseUp={handleEnd}
 			onMouseLeave={handleEnd}

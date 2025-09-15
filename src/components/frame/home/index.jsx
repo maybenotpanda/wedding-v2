@@ -1,11 +1,11 @@
 // ** React Imports
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import Snowfall from 'react-snowfall'
 
 // ** Store Imports
 import { dataDetailGuest, loadingDetailGuest } from 'config/store/modules/guest/selector'
-import { createMessage } from 'config/store/modules/messages/actions'
+import { createMessage, listMessages } from 'config/store/modules/messages/actions'
 
 // ** Fragments Imports
 import Cover from 'components/fragments/cover'
@@ -20,17 +20,24 @@ import Form from 'components/fragments/form'
 // ** Assets Imports
 import background from 'assets/images/background.jpg'
 import bgHome from 'assets/images/backgorud-home.jpg'
-import cloud from 'assets/images/cloud.png'
 
 const HomeFrame = () => {
 	const [isCover, setIsCover] = useState(true)
-	const [closed, setClosed] = useState(false);
+	const [closed, setClosed] = useState(false)
+	const [page, setPage] = useState(1)
+	const [limit, setLimit] = useState(8)
 	const dispatch = useDispatch()
-	// const errDetail = useSelector(errorDetailGuest)
+
 	const dataDetail = useSelector(dataDetailGuest)
 	const loadData = useSelector(loadingDetailGuest)
 
-	return loadData ? "" : (
+	useEffect(() => {
+		dispatch(listMessages({ page: page - 1, limit }));
+	}, [dispatch, page, limit])
+
+	return loadData ? (
+		'Loading...'
+	) : (
 		<Fragment>
 			<img
 				className="w-3/5 h-screen object-cover fixed left-0 top-0 z-10 hidden lg:block bg-top"
@@ -48,63 +55,41 @@ const HomeFrame = () => {
 				</div>
 				<Cover name={dataDetail.name} isCover={isCover} setIsCover={setIsCover} />
 				<div className="lg:w-2/5 w-full overflow-y-scroll ml-auto z-20 bg-background">
-					<div className="h-screen bg-fixed bg-center bg-cover grid justify-items-center content-center" style={{ backgroundImage: `url(${bgHome})` }}>
+					<div
+						className="h-screen bg-fixed bg-center bg-cover grid justify-items-center content-center"
+						style={{ backgroundImage: `url(${bgHome})` }}>
 						<div className="window relative">
-							<div
-								className={`${isCover ? "" : "top"} ${closed ? "closed" : ""}}`}
-							onClick={() => setClosed(!closed)}
-							></div>
-						<div className="glass">
-							<div className="sky">
-								<div className="cloud" />
-								<div className="cloud" />
-								<div className="cloud" />
-								<div className="cloud" />
-								<div className="cloud" />
-								<div className="cloud" />
-								<div className="window-text">
-									<h1 className='text-black text-center font-header'>MW</h1>
-									<h4 className='text-black text-center font-header'>&</h4>
-									<h1 className='text-black text-center font-header'>Reza</h1>
+							<div className={`top ${isCover ? 'hidden' : 'top '} ${closed ? 'closed' : ''}`} onClick={() => setClosed(!closed)}></div>
+							<div className="glass">
+								<div className="sky">
+									<div className="cloud" />
+									<div className="cloud" />
+									<div className="cloud" />
+									<div className="cloud" />
+									<div className="cloud" />
+									<div className="cloud" />
+									<div className="window-text">
+										<h1 className="text-black text-center font-header">MW</h1>
+										<h4 className="text-black text-center font-header">&</h4>
+										<h1 className="text-black text-center font-header">Reza</h1>
+									</div>
+									<div className="nyan-cat" />
 								</div>
-								<div className="nyan-cat" />
 							</div>
 						</div>
 					</div>
-					<div className="image-right2">
-						<img
-							src={cloud}
-							alt="cloud"
-							className="absolute top-28 -left-10 w-44 h-auto"
-						/>
+					<AboutUs />
+					<CountdownTimer type={dataDetail.type} />
+					<MainEvent data={event} type={dataDetail.type} />
+					<OurStore />
+					<div className="grid gap-3 bg-primary">
+						<GiftFragments data={bank} />
+						<Form page={page} limit={limit} setPage={setPage} setLimit={setLimit} data={(e) => dispatch(createMessage({ ...e, guest_id: dataDetail.uuid }))} />
 					</div>
-					<div className="image-right">
-						<img
-							src={cloud}
-							alt="cloud"
-							className="absolute left-8 w-44 h-auto"
-						/>
-					</div>
-					<div className="image-left">
-						<img
-							src={cloud}
-							alt="cloud"
-							className="absolute -right-12 w-56 top-[42rem] h-auto"
-						/>
-					</div>
+					<ThankYouFragments />
 				</div>
-				<AboutUs />
-				<CountdownTimer type={dataDetail.type} />
-				<MainEvent data={event} type={dataDetail.type} />
-				<OurStore />
-				<div className='grid gap-3 bg-primary'>
-					<GiftFragments data={bank} />
-					<Form data={(e) => dispatch(createMessage({ ...e, guest_id: dataDetail.uuid }))} />
-				</div>
-				<ThankYouFragments />
 			</div>
-		</div>
-		</Fragment >
+		</Fragment>
 	)
 }
 
@@ -112,24 +97,30 @@ export default HomeFrame
 
 const event = [
 	{
+		day: 'Jumat',
+		dayNumber: '03',
+		monthyear: "Oktober 2025",
 		name: 'Akad Nikah',
-		date: 'Jumat, 03 Oktober 2025',
 		time: '07:00',
 		location: 'Masjid Al-Jihad',
 		dressCode: 'Putih',
 		maps: 'https://maps.app.goo.gl/FsAESiQC7XRW1Whe7'
 	},
 	{
-		name: 'Resepsi',
-		date: 'Sabtu, 04 Oktober 2025',
+		day: 'Sabtu',
+		dayNumber: '04',
+		monthyear: "Oktober 2025",
+		name: 'Prosesi Resepsi',
 		time: '10:00',
 		location: 'Gedung Gelanggang USU',
 		dressCode: 'Cream atau Batik',
 		maps: 'https://maps.app.goo.gl/WrvbPF5qC925nWaY9'
 	},
 	{
+		day: 'Minggu',
+		dayNumber: '06',
+		monthyear: "Oktober 2025",
 		name: 'Unduh Mantu',
-		date: 'Minggu, 05 Oktober 2025',
 		time: '10:00',
 		location: 'Rumah Orang Tua Mempelai Pria',
 		maps: ''

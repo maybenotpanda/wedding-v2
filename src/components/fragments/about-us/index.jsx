@@ -10,21 +10,24 @@ import women from 'assets/images/women.png'
 import cloud from 'assets/images/cloud.png'
 import background from 'assets/images/background-about.jpg'
 import airplane from 'assets/images/pesawat 1.png'
+import quran from 'assets/images/ar_rum21.png'
 
 const AboutUs = () => {
 	return (
-		<div className="relative bg-fixed bg-center bg-cover py-2" style={{ backgroundImage: `url(${background})` }}>
-			<div className="absolute inset-0 bg-background/95"></div>
+		<div
+			className="relative bg-fixed bg-center bg-cover py-2 overflow-hidden pt-2"
+			style={{ backgroundImage: `url(${background})` }}>
+			<div className="absolute inset-0 bg-background/90"></div>
 			<Head
 				title="Assalamualaikum Wr. Wb."
-				description="Tanpa mengurangi rasa hormat, kami mengundang bapak/ibu/sudara/i serta kerabat sekalian untuk menghadiri acara
+				description="Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i serta kerabat sekalian untuk menghadiri acara
 				pernikahan kami"
 			/>
 			<div className="grid gap-5">
 				<div className="grid gap-2 justify-items-start">
 					<div className="relative mb-8">
 						<div className="image-left">
-							<img src={airplane} alt="airplane" className="absolute top-10 right-0 w-20 h-auto" />
+							<img src={airplane} alt="airplane" className="absolute top-10 -right-12 w-20 h-auto" />
 						</div>
 						<img src={women} alt="mw" className="h-64 mx-auto" data-aos="fade-up-right" data-aos-duration="1500" />
 						<div className="image-right2">
@@ -81,6 +84,16 @@ const AboutUs = () => {
 							Bapak Edi Susanto & Ibu Retno Jumini
 						</h6>
 					</div>
+				</div>
+				<div className="bg-primary/50 h-[2px] relative mx-4" />
+				<div className="relative px-4 grid gap-3 my-4">
+					<Head title="QS. Ar-Rum: 21" />
+					<img src={quran} alt="al rum 21" className="w-full " />
+					<span className="text-center text-[#545454]">
+						“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, agar kamu
+						cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sesungguhnya pada
+						yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.”
+					</span>
 				</div>
 			</div>
 		</div>
