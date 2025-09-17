@@ -10,7 +10,7 @@ import { BsPlayFill, BsFillPauseFill } from 'react-icons/bs'
 // ** Assets Imports
 import background from 'assets/images/cover.jpg'
 import SlideButton from 'components/elements/slide-button'
-import music from 'assets/music/sal-priadi-dan-nadin amizah-amin-paling-serius.mp3'
+import music from 'assets/music/bandaneira-sampai-jadi-debu.mp3'
 
 const Cover = ({ name, isCover, setIsCover }) => {
 	// ! hooks
