@@ -82,7 +82,10 @@ const HomeFrame = (props) => {
 					<div className="lg:w-2/5 w-full overflow-y-hidden ml-auto z-20 bg-background">
 						<Welcome closed={closed} setClosed={setClosed} isCover={isCover} />
 						<AboutUs />
-						<Countdown type={dataDetail.type} />
+						<div className='bg-primary'>
+							<Countdown type={dataDetail.type} />
+							<div class="border-t-2 border-dashed border-secondary mx-4" />
+						</div>
 						<MainEvent data={schedule} type={dataDetail.type} />
 						<OurStore />
 						<div className="grid gap-3 bg-primary">
