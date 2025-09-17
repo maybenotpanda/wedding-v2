@@ -85,11 +85,11 @@ const AboutUs = () => {
 						</h6>
 					</div>
 				</div>
-				<div className="bg-primary/50 h-[2px] relative mx-4" />
+				<div className="bg-primary/50 h-[2px] relative mx-4" data-aos="zoom-in-up" />
 				<div className="relative px-4 grid gap-3 my-4">
 					<Head title="QS. Ar-Rum: 21" />
-					<img src={quran} alt="al rum 21" className="w-full " />
-					<span className="text-center text-[#545454]">
+					<img src={quran} alt="al rum 21" className="w-full" data-aos="zoom-in-up" />
+					<span className="text-center text-[#545454]" data-aos="fade-up">
 						“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, agar kamu
 						cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang. Sesungguhnya pada
 						yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.”
