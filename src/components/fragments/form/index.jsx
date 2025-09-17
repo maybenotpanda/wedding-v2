@@ -57,7 +57,7 @@ const Wishes = (props) => {
 							</button>
 						</FormGroup>
 					</Form>
-					<div className="h-96 lg:h-[20rem] xl:h-[34rem] overflow-y-auto pr-2 scrollbar-hide">
+					<div className="h-72 lg:h-[20rem] xl:h-[34rem] overflow-y-auto pr-2 scrollbar-hide">
 						{loadList ? 'Loading' : errList ? <p>{errList}</p> : dataList ? (
 							<Message data={dataList.data} />
 						) : (
