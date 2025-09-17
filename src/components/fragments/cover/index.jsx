@@ -8,7 +8,7 @@ import { Howl } from 'howler'
 import { BsPlayFill, BsFillPauseFill } from 'react-icons/bs'
 
 // ** Assets Imports
-import background from 'assets/images/cover.jpg'
+import background from 'assets/images/cover.png'
 import SlideButton from 'components/elements/slide-button'
 import music from 'assets/music/bandaneira-sampai-jadi-debu.mp3'
 
@@ -20,20 +20,6 @@ const Cover = ({ name, isCover, setIsCover }) => {
 	const [sound, setSound] = useState(null)
 
 	// * effect
-	useEffect(() => {
-		const newSound = new Howl({
-			src: [music],
-			autoplay: true,
-			onend: () => {
-				setIsPlaying(true)
-			}
-		})
-		setSound(newSound)
-		return () => {
-			newSound.unload()
-		}
-	}, [])
-
 	useEffect(() => {
 		if (isCover) {
 			document.body.style.overflow = 'hidden'
@@ -47,6 +33,19 @@ const Cover = ({ name, isCover, setIsCover }) => {
 
 	const handleCover = () => {
 		setCoverAnimation('cover-animation-enter')
+		if (!sound) {
+			const newSound = new Howl({
+				src: [music],
+				loop: true,
+				volume: 0
+			})
+
+			newSound.play()
+			newSound.fade(0, 1, 2000)
+
+			setSound(newSound)
+			setIsPlaying(true)
+		}
 		setTimeout(() => {
 			setIsCover(false)
 			setCoverAnimation('')
@@ -56,9 +55,15 @@ const Cover = ({ name, isCover, setIsCover }) => {
 	const handlePlayPause = () => {
 		if (sound) {
 			if (isPlaying) {
-				sound.pause()
+				sound.fade(sound.volume(), 0, 2000)
+				setTimeout(() => {
+					sound.pause()
+					sound.volume(1)
+				}, 2000)
 			} else {
 				sound.play()
+				sound.volume(0)
+				sound.fade(0, 1, 2000)
 			}
 			setIsPlaying(!isPlaying)
 		}

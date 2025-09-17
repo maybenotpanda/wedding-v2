@@ -8,7 +8,7 @@ const CountdownTimer = ({ type }) => {
   const times = useMemo(() => ({
     akad: new Date("2025-10-03T07:00:00").getTime(),
     resepsi: new Date("2025-10-04T10:00:00").getTime(),
-    unduhMantu: new Date("2025-10-05T10:00:00").getTime(),
+    // unduhMantu: new Date("2025-10-05T10:00:00").getTime(),
   }), []);
 
   const getTargetDate = useCallback(() => {
