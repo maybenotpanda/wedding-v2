@@ -9,7 +9,7 @@ const OurStore = () => {
 	return (
 		<div className='py-6'>
 			<Head title="Journey Of Love" />
-			<h6 className="text-center italic py-2 px-4 text-black">
+			<h6 className="text-center italic py-2 px-4 text-black" data-aos="zoom-in-up" >
 				Berawal dari SMK pada tahun 2016, obrolan singkat tanpa saling mengenal.Sebuah kelas yang sama, suatu percakapan tentang sampul buku berwarna hijau, memberikan kisah panjang kami, demikian memulai perjalanan penuh suka dan duka mengenal satu sama lain, menerima baik buruk dan berkembang bersama.
 				<br />
 				<br />
