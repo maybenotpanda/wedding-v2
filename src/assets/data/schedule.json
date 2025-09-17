@@ -1,0 +1,31 @@
+[
+	{
+		"day": "Jumat",
+		"dayNumber": "03",
+		"monthyear": "Oktober 2025",
+		"name": "Akad Nikah",
+		"time": "07:00",
+		"location": "Masjid Al-Jihad",
+		"dressCode": "Putih",
+		"maps": "https://maps.app.goo.gl/FsAESiQC7XRW1Whe7"
+	},
+	{
+		"day": "Sabtu",
+		"dayNumber": "04",
+		"monthyear": "Oktober 2025",
+		"name": "Prosesi Resepsi",
+		"time": "10:00",
+		"location": "Gedung Gelanggang USU",
+		"dressCode": "Cream atau Batik",
+		"maps": "https://maps.app.goo.gl/WrvbPF5qC925nWaY9"
+	},
+	{
+		"day": "Minggu",
+		"dayNumber": "05",
+		"monthyear": "Oktober 2025",
+		"name": "Unduh Mantu",
+		"time": "12:00",
+		"location": "Rumah Orang Tua Mempelai Pria",
+		"maps": ""
+	}
+]

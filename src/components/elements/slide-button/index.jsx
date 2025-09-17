@@ -61,7 +61,8 @@ const SlideButton = ({ onSlide, disabled }) => {
 			<Label opacity={1 - progress}>{disabled ? 'Not Available' : 'Slide for invitation'}</Label>
 			<Thumb
 				className="bg-secondary"
-				sliding={sliding}
+				// sliding={sliding}
+				$sliding={sliding}
 				position={position}
 				onMouseDown={handleStart}
 				onTouchStart={handleStart}
