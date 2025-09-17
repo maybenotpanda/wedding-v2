@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 // ** Store Imports
 import { listMessages } from 'config/store/modules/messages/actions'
 import { detailGuest } from 'config/store/modules/guest/action'
+import { createMessage } from 'config/store/modules/messages/actions'
 
 // ** Frame Imports
 import Frame from 'components/frame/home'
@@ -30,7 +31,7 @@ const HomePage = () => {
 
 	return (
 		<Fragment>
-			<Frame page={page} limit={limit} setPage={setPage} setLimit={setLimit} />
+			<Frame page={page} limit={limit} setPage={setPage} setLimit={setLimit} data={(e) => dispatch(createMessage({ ...e }))} />
 		</Fragment>
 	)
 }
