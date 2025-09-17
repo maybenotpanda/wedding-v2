@@ -46,7 +46,7 @@ const AboutUs = () => {
 							MW Putri Meilinia H. Purba, S.Kom
 						</h3>
 						<h6 className="text-left text-[#545454]" data-aos="fade-up-right">
-							Putri Ketiga dari Pasangan
+							Putri Bungsu dari Pasangan
 						</h6>
 						<h6 className="text-black" data-aos="fade-up-right">
 							Bapak Kawaluddin Hasyim Purba & Ibu Evienda Ginting
