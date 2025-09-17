@@ -1,0 +1,14 @@
+[
+	{
+		"type": "bank",
+		"account": "bsi",
+		"accountNumber": "7249818466",
+		"accountName": "MW Putri Meilinia H. Purba"
+	},
+	{
+		"type": "home",
+		"address": "Jl. Belakang Pasar Baru I No.23, Joyfull Kost, Pasar Baru, Jakarta Pusat",
+		"accountName": "MW Putri",
+		"phoneNumber": "081362223600"
+	}
+]
