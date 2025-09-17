@@ -52,13 +52,13 @@ const Wishes = (props) => {
 							<TextArea placeholder="Ucapan" showCount maxLength={300} autoSize />
 						</Form.Item>
 						<FormGroup>
-							<button htmlType="submit" className="bg-white rounded-md py-2 text-center text-primary w-full">
+							<button type="submit" className="bg-white rounded-md py-2 text-center text-primary w-full">
 								Kirim
 							</button>
 						</FormGroup>
 					</Form>
-					<div className="h-[30rem] overflow-y-auto pr-2 scrollbar-hide">
-						{loadList ? 'Loading' : errList ? 'Error' : dataList ? (
+					<div className="h-96 lg:h-[20rem] xl:h-[34rem] overflow-y-auto pr-2 scrollbar-hide">
+						{loadList ? 'Loading' : errList ? <p>{errList}</p> : dataList ? (
 							<Message data={dataList.data} />
 						) : (
 							<div className="flex justify-center h-full items-center">

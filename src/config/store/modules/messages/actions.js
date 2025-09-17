@@ -18,10 +18,10 @@ export const listMessages = ({ page, limit }) => {
         method: 'get',
         url: `${API_URLS.LIST_MESSAGE}?page=${page}&limit=${limit}`
       })
-      dispatch(successAction(ACTION_TYPES.MESSAGES_LIST_SUCCESS, res.data))
+      dispatch(successAction(ACTION_TYPES.MESSAGES_LIST_SUCCESS, res.data.data))
     } catch (err) {
       const message = err.response?.data || 'Unknown error occurred'
-      dispatch(failureAction(ACTION_TYPES.MESSAGES_LIST_FAILED, message))
+      dispatch(failureAction(ACTION_TYPES.MESSAGES_LIST_FAILED, message.message))
     }
   }
 }
@@ -37,10 +37,9 @@ export const createMessage = (req) => {
         url: `${API_URLS.CREATE_MESSAGE}`,
         data: req
       })
-      dispatch(successAction(ACTION_TYPES.CREATE_MESSAGE_SUCCESS, res.data))
+      dispatch(successAction(ACTION_TYPES.MESSAGE_CREATE_SUCCESS, res))
     } catch (err) {
       const message = err || 'Unknown error occurred'
-      console.log(message);
       dispatch(failureAction(ACTION_TYPES.MESSAGE_CREATE_FAILED, message))
     }
   }
