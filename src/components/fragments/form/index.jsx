@@ -1,30 +1,38 @@
 // ** React Imports
 import React from 'react'
+import { useSelector } from 'react-redux'
+
+// ** Styled Imports
+import styled from 'styled-components'
 
 // ** Antd Imports
-import { Input, Form, Pagination } from 'antd'
+import { Input, Form } from 'antd'
+
+// ** Store Imports
+import { dataListMessages, errorListMessages, loadingListMessages } from 'config/store/modules/messages/selector'
 
 // ** Elements Imports
 import Head from 'components/elements/head'
 import Message from 'components/elements/message'
-import styled from 'styled-components'
-import { dataListMessages, errorListMessages, loadingListMessages } from 'config/store/modules/messages/selector'
-import { useSelector } from 'react-redux'
 
 const { TextArea } = Input
+
 const Wishes = (props) => {
+	// ! props
+	const { data } = props
+
+	// ! selector
 	const loadList = useSelector(loadingListMessages)
 	const errList = useSelector(errorListMessages)
 	const dataList = useSelector(dataListMessages)
 
-	const { data } = props
 	const handleSubmit = (e) => {
 		const req = { ...e }
 		data(req)
 	}
 
 	return (
-		<div className="h-screen grid gap-3 content-start justify-items-center bg-primary">
+		<div className="grid gap-3 content-start justify-items-center bg-primary py-6">
 			<Head title="Wishes" description="Berikan ucapan harapan dan do’a kepada kedua mempelai" color="white" />
 			<div className="px-4 w-full">
 				<div className="bg-secondary rounded-3xl shadow-sm relative px-4 w-full grid gap-4 py-2">
@@ -66,6 +74,7 @@ const Wishes = (props) => {
 							</div>
 						)}
 					</div>
+					{/*
 					<div className='flex justify-center items-center'>
 						<Pagination
 							current={props.page}
@@ -78,6 +87,7 @@ const Wishes = (props) => {
 							}}
 						/>
 					</div>
+					*/}
 				</div>
 			</div>
 		</div>

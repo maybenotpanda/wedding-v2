@@ -2,9 +2,6 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-	// width: 16rem; /* 64 */
-	height: 3rem; /* 12 */
-	border-radius: 9999px;
 	overflow: hidden;
 	user-select: none;
 `
@@ -15,7 +12,6 @@ export const Label = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: white;
 	font-size: 0.875rem;
 	pointer-events: none;
 	z-index: 1;

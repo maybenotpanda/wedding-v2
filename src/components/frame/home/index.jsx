@@ -84,7 +84,7 @@ const HomeFrame = (props) => {
 						<AboutUs />
 						<div className='bg-primary'>
 							<Countdown type={dataDetail.type} />
-							<div class="border-t-2 border-dashed border-secondary mx-4" />
+							<div className="border-t-2 border-dashed border-secondary mx-4" />
 						</div>
 						<MainEvent data={schedule} type={dataDetail.type} />
 						<OurStore />
