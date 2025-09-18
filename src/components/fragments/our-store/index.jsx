@@ -10,7 +10,7 @@ import flower from 'assets/images/flower.png'
 const OurStore = () => {
 	return (
 		<Fragment>
-			<img src={flower} className="rotate-180" />
+			<img src={flower} className="rotate-180" alt='flower'/>
 			<Head title="Journey Of Love" />
 			<div className="bg-background w-4/5 rounded-r-3xl shadow-md border-y-8 border-[#545454] my-6">
 				<p className="py-4 italic px-4 text-[#545454] break-words text-justify" data-aos="zoom-in-up">
@@ -33,7 +33,7 @@ const OurStore = () => {
 					Dengan ridho Allah SWT, dengan membangun keluarga yang sakinah, mawadah, dan warahmah hingga akhir hayat.
 				</p>
 			</div>
-			<img src={flower} />
+			<img src={flower} alt='flower' />
 		</Fragment>
 	)
 }
