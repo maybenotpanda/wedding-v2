@@ -10,19 +10,19 @@ import { failureAction, startAction, successAction } from 'config/utils/action'
 
 // ! read
 export const detailGuest = (slug) => {
-  return async (dispatch) => {
-    dispatch(startAction(ACTION_TYPES.GUEST_DETAIL_START))
+	return async (dispatch) => {
+		dispatch(startAction(ACTION_TYPES.GUEST_DETAIL_START))
 
-    try {
-      const res = await apiGeneral.request({
-        method: 'get',
-        url: `${API_URLS.GUEST}/${slug}`
-      })
-      dispatch(successAction(ACTION_TYPES.GUEST_DETAIL_SUCCESS, res.data.data))
-    } catch (err) {
-      const message = err || 'Unknown error occurred'
-      console.log(message);
-      dispatch(failureAction(ACTION_TYPES.GUEST_DETAIL_FAILED, message))
-    }
-  }
+		try {
+			const res = await apiGeneral.request({
+				method: 'get',
+				url: `${API_URLS.GUEST}/${slug}`
+			})
+			dispatch(successAction(ACTION_TYPES.GUEST_DETAIL_SUCCESS, res.data.data))
+		} catch (err) {
+			const message = err || 'Unknown error occurred'
+			console.log(message)
+			dispatch(failureAction(ACTION_TYPES.GUEST_DETAIL_FAILED, message))
+		}
+	}
 }
