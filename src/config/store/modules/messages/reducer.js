@@ -15,17 +15,17 @@ export const messagesReducer = (state = INITIAL_STATE, action) => {
   switch (type) {
     case ACTION_TYPES.MESSAGE_CREATE_START:
       return { ...state, isLoading: true, error: null, currentAction: 'create' }
-    case ACTION_TYPES.MESSAGES_LIST_START:
+    case ACTION_TYPES.MESSAGE_LIST_START:
       return { ...state, isLoading: true, error: null, currentAction: 'list' }
 
     case ACTION_TYPES.MESSAGE_CREATE_SUCCESS:
       return { ...state, isLoading: false, create: payload, error: null }
-    case ACTION_TYPES.MESSAGES_LIST_SUCCESS:
+    case ACTION_TYPES.MESSAGE_LIST_SUCCESS:
       return { ...state, isLoading: false, list: payload, error: null }
 
     case ACTION_TYPES.MESSAGE_CREATE_FAILED:
       return { ...state, isLoading: false, error: payload, currentAction: 'create' }
-    case ACTION_TYPES.MESSAGES_LIST_FAILED:
+    case ACTION_TYPES.MESSAGE_LIST_FAILED:
       return { ...state, isLoading: false, error: payload, currentAction: 'list' }
 
     default:
