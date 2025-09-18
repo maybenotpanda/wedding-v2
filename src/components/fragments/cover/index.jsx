@@ -101,7 +101,7 @@ const Cover = ({ name, isCover, setIsCover }) => {
 							{name ? (
 								<Fragment>
 									<h6 className="w-full text-center text-white font-serif">Dear Mr./Mrs./Ms.</h6>
-									<h5 className="text-secondary italic font-serif font-bold text-center w-full break-all">{name}</h5>
+									<h5 className="text-secondary italic font-serif font-bold text-center w-full break-words">{name}</h5>
 								</Fragment>
 							) : (
 								<h5 className="text-red-700 font-serif">Mohon maaf anda tidak ada dalam panggilan</h5>
