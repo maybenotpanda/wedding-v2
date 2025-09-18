@@ -21,7 +21,6 @@ export const detailGuest = (slug) => {
 			dispatch(successAction(ACTION_TYPES.GUEST_DETAIL_SUCCESS, res.data.data))
 		} catch (err) {
 			const message = err || 'Unknown error occurred'
-			console.log(message)
 			dispatch(failureAction(ACTION_TYPES.GUEST_DETAIL_FAILED, message))
 		}
 	}
