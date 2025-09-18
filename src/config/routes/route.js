@@ -17,7 +17,7 @@ const RoutePage = () => {
 				<Route path=":slug" element={<Home />} />
 				<Route path="/location" element={<Location />} />
 				<Route path="/makasih" element={<ThankYou />} />
-				<Route path="*" element={<HomePage />} />
+				<Route path="*" element={<Home />} />
 			</Routes>
 		</Suspense>
 	)
