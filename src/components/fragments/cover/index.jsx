@@ -111,7 +111,7 @@ const Cover = ({ name, isCover, setIsCover }) => {
 									className="bg-primary/20 backdrop-blur-md relative w-60 border-2 rounded-full h-12 text-white text-[0.875rem] text-center"
 									onClick={handleLockClick}
 									$animateOut={animateOut}>
-									🔓 Unlock Invitation
+									{name ? '🔓 Unlock Invitation' : '🔐 Lock Invitation'}
 								</AnimatedButton>
 							) : (
 								<SlideWrapper>
