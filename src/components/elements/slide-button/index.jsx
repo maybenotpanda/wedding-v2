@@ -5,10 +5,13 @@ import React, { useState, useRef } from 'react'
 import { Container, Overlay, Label, Thumb } from './styles'
 
 const SlideButton = ({ onSlide, disabled }) => {
+	// ! hooks
+	// * state
 	const [position, setPosition] = useState(0)
 	const [sliding, setSliding] = useState(false)
 	const containerRef = useRef(null)
 
+	// ! handle
 	const handleStart = () => {
 		if (disabled) return
 		setSliding(true)
