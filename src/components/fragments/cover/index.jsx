@@ -104,7 +104,7 @@ const Cover = ({ name, isCover, setIsCover }) => {
 									<h5 className="text-secondary italic font-serif font-bold text-center w-full break-words">{name}</h5>
 								</Fragment>
 							) : (
-								<h5 className="text-red-700 font-serif">Mohon maaf anda tidak ada dalam panggilan</h5>
+								<h5 className="text-red-700 font-serif text-center">Mohon maaf anda tidak ada dalam panggilan</h5>
 							)}
 							{!showSlider ? (
 								<AnimatedButton
