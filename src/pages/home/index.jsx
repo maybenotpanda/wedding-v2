@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 // ** Store Imports
-import { listMessages } from 'config/store/modules/messages/actions'
+import { listMessage } from 'config/store/modules/messages/actions'
 import { detailGuest } from 'config/store/modules/guest/action'
 import { createMessage } from 'config/store/modules/messages/actions'
 
@@ -25,7 +25,7 @@ const HomePage = () => {
 
 	// * effect
 	useEffect(() => {
-		dispatch(listMessages({ page: page - 1, limit }))
+		dispatch(listMessage({ page: page - 1, limit }))
 		dispatch(detailGuest(params.slug))
 	}, [dispatch, params, page, limit])
 

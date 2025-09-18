@@ -6,12 +6,12 @@ const selectDefault = (state) => state.guest
 // ! read
 export const loadingDetailGuest = createSelector(
   [selectDefault],
-  (slice) => slice.isLoading && slice.currentAction === 'detail'
+  (slice) => slice.isLoading
 )
 
 export const errorDetailGuest = createSelector(
   [selectDefault],
-  (slice) => slice.error && slice.currentAction === 'detail' ? slice.error : null
+  (slice) => slice.error ? slice.error : null
 )
 
 export const dataDetailGuest = createSelector(

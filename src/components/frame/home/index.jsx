@@ -50,11 +50,11 @@ const HomeFrame = (props) => {
 		let loadingMessage = null
 
 		if (loadCreate) {
-			loadingMessage = message.loading("Tunggu Sebentar...", 0)
+			loadingMessage = message.loading('Tunggu Sebentar...', 0)
 		}
 
 		if (succCreate && succCreate.data) {
-			message.success("Pesan berhasil dikirim")
+			message.success('Pesan berhasil dikirim')
 		}
 
 		return () => {
@@ -64,10 +64,9 @@ const HomeFrame = (props) => {
 		}
 	}, [loadCreate, succCreate, errCreate])
 
-
 	return loadDetail ? (
 		<Loading />
-	) : errDetail ? (
+	) : errDetail && errDetail?.status !== 404 ? (
 		'Something is going on in the Universe...'
 	) : (
 		<Fragment>
@@ -82,7 +81,7 @@ const HomeFrame = (props) => {
 					<div className="lg:w-2/5 w-full overflow-y-hidden ml-auto z-20 bg-background">
 						<Welcome closed={closed} setClosed={setClosed} isCover={isCover} />
 						<AboutUs />
-						<div className='bg-primary'>
+						<div className="bg-primary">
 							<Countdown type={dataDetail.type} />
 							<div className="border-t-2 border-dashed border-secondary mx-4" />
 						</div>
