@@ -66,7 +66,7 @@ const Wishes = (props) => {
 						</FormGroup>
 					</Form>
 					<div className="h-72 lg:h-[20rem] xl:h-[34rem] overflow-y-auto pr-2 scrollbar-hide">
-						{loadList ? 'Loading' : errList ? <p>{errList}</p> : dataList ? (
+						{loadList ? 'Loading' : errList ? <p>{errList}</p> : dataList && dataList.data && dataList.data.length > 0 ? (
 							<Message data={dataList.data} />
 						) : (
 							<div className="flex justify-center h-full items-center">
