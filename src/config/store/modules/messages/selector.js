@@ -5,31 +5,26 @@ const selectDefault = (state) => state.messages
 
 // ! create
 export const loadingCreateMessage = createSelector(
-  [selectDefault],
-  (slice) => slice.isLoading && slice.currentAction === 'create'
+	[selectDefault],
+	(slice) => slice.isLoading && slice.currentAction === 'create'
 )
 
 export const errorCreateMessage = createSelector(
-  [selectDefault],
+  [selectDefault], 
   (slice) => slice.error && slice.currentAction === 'create' ? slice.error : null
 )
 
-export const dataCreateMessage = createSelector(
-  [selectDefault],
-  (slice) => slice.create
+export const dataCreateMessage = createSelector([selectDefault], (slice) => slice.create)
+
+// ! read
+export const loadingListMessage = createSelector(
+	[selectDefault],
+	(slice) => slice.isLoading && slice.currentAction === 'list'
 )
 
-export const loadingListMessages = createSelector(
-  [selectDefault],
-  (slice) => slice.isLoading && slice.currentAction === 'list'
-)
-
-export const errorListMessages = createSelector(
-  [selectDefault],
+export const errorListMessage = createSelector(
+  [selectDefault], 
   (slice) => slice.error && slice.currentAction === 'list' ? slice.error : null
 )
 
-export const dataListMessages = createSelector(
-  [selectDefault],
-  (slice) => slice.list
-)
+export const dataListMessage = createSelector([selectDefault], (slice) => slice.list)

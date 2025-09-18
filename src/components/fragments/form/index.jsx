@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import { Input, Form } from 'antd'
 
 // ** Store Imports
-import { dataListMessages, errorListMessages, loadingListMessages } from 'config/store/modules/messages/selector'
+import { dataListMessage, errorListMessage, loadingListMessage } from 'config/store/modules/messages/selector'
 
 // ** Elements Imports
 import Head from 'components/elements/head'
@@ -22,9 +22,9 @@ const Wishes = (props) => {
 	const { data } = props
 
 	// ! selector
-	const loadList = useSelector(loadingListMessages)
-	const errList = useSelector(errorListMessages)
-	const dataList = useSelector(dataListMessages)
+	const loadList = useSelector(loadingListMessage)
+	const errList = useSelector(errorListMessage)
+	const dataList = useSelector(dataListMessage)
 
 	const handleSubmit = (e) => {
 		const req = { ...e }

@@ -101,17 +101,17 @@ const Cover = ({ name, isCover, setIsCover }) => {
 							{name ? (
 								<Fragment>
 									<h6 className="w-full text-center text-white font-serif">Dear Mr./Mrs./Ms.</h6>
-									<h5 className="text-secondary italic font-serif font-bold text-center w-full break-all">{name}</h5>
+									<h5 className="text-secondary italic font-serif font-bold text-center w-full break-words">{name}</h5>
 								</Fragment>
 							) : (
-								<h5 className="text-red-700 font-serif">Mohon maaf anda tidak ada dalam panggilan</h5>
+								<h5 className="text-red-700 font-serif text-center">Mohon maaf anda tidak ada dalam panggilan</h5>
 							)}
 							{!showSlider ? (
 								<AnimatedButton
 									className="bg-primary/20 backdrop-blur-md relative w-60 border-2 rounded-full h-12 text-white text-[0.875rem] text-center"
 									onClick={handleLockClick}
 									$animateOut={animateOut}>
-									🔓 Unlock Invitation
+									{name ? '🔓 Unlock Invitation' : '🔐 Lock Invitation'}
 								</AnimatedButton>
 							) : (
 								<SlideWrapper>
