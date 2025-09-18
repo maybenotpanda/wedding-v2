@@ -39,22 +39,28 @@ const AboutUs = () => {
 								data-aos-duration="1000"
 							/>
 						</div>
-						{/*<h1 className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-black font-header">MW</h1>*/}
 					</div>
 					<div className="pl-4">
-						<h3 className="font-header text-secondary" data-aos="fade-up-right">
+						<h1 className="font-header text-secondary pb-2" data-aos="fade-up-right">
+							MW
+						</h1>
+						<h4 className="font-description text-[#545454]" data-aos="fade-up-right">
 							MW Putri Meilinia H. Purba, S.Kom
-						</h3>
-						<h6 className="text-left text-[#545454]" data-aos="fade-up-right">
+						</h4>
+						<p className="text-left text-[#545454]" data-aos="fade-up-right">
 							Putri Bungsu dari Pasangan
-						</h6>
+						</p>
 						<h6 className="text-black" data-aos="fade-up-right">
-							Bapak Kawaluddin Hasyim Purba & Ibu Evienda Ginting
+							Bapak Kawaluddin Hasyim Purba
+							<br />
+							&
+							<br />
+							Ibu Evienda Ginting
 						</h6>
 					</div>
 				</div>
-				<h1 className="text-center font-header text-6xl text-secondary/45" data-aos="zoom-in" data-aos-duration="3000">
-					&
+				<h1 className="text-center font-header text-6xl text-secondary/60" data-aos="zoom-in" data-aos-duration="3000">
+					and
 				</h1>
 				<div className="grid gap-2 justify-items-end">
 					<div className="relative mb-8">
@@ -71,21 +77,26 @@ const AboutUs = () => {
 								data-aos-duration="1000"
 							/>
 						</div>
-						{/*<h1 className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-black font-header">Reza</h1>*/}
 					</div>
 					<div className="pr-4">
-						<h2 className="font-header text-right text-secondary" data-aos="fade-up-left">
+						<h1 className="font-header text-secondary text-right pb-2" data-aos="fade-up-right">
+							Reza
+						</h1>
+						<h4 className="font-description text-[#545454] text-right" data-aos="fade-up-right">
 							Muhammad Fariz Dzuhreza, S.Kom
-						</h2>
-						<h6 className="text-right text-[#545454]" data-aos="fade-up-left">
-							Putra Tunggal dari Pasangan
-						</h6>
-						<h6 className="text-right text-black" data-aos="fade-up-left">
-							Bapak Edi Susanto & Ibu Retno Jumini
+						</h4>
+						<p className=" text-[#545454] text-right" data-aos="fade-up-right">
+							Putra Tungal dari Pasangan
+						</p>
+						<h6 className="text-black text-right" data-aos="fade-up-right">
+							Bapak Edi Susanto
+							<br />
+							&
+							<br /> Ibu Retno Jumini
 						</h6>
 					</div>
 				</div>
-				<div className="bg-primary/50 h-[2px] relative mx-4" data-aos="zoom-in-up" />
+				<div className="border-t-2 border-dashed border-secondary/50 mx-4 relative" data-aos="zoom-in-up" />
 				<div className="relative px-4 grid gap-3 my-4">
 					<Head title="QS. Ar-Rum: 21" />
 					<img src={quran} alt="al rum 21" className="w-full" data-aos="zoom-in-up" />
