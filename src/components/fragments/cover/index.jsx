@@ -18,6 +18,7 @@ const Cover = ({ name, isCover, setIsCover }) => {
 	const [coverAnimation, setCoverAnimation] = useState('')
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [sound, setSound] = useState(null)
+	const [showSlider, setShowSlider] = useState(false)
 
 	// * effect
 	useEffect(() => {
@@ -30,6 +31,11 @@ const Cover = ({ name, isCover, setIsCover }) => {
 			document.body.style.overflow = 'auto'
 		}
 	}, [isCover])
+
+	// ! handle
+	const handleLockClick = () => {
+		setShowSlider(true)
+	}
 
 	const handleCover = () => {
 		setCoverAnimation('cover-animation-enter')
@@ -90,7 +96,13 @@ const Cover = ({ name, isCover, setIsCover }) => {
 							) : (
 								<h5 className="text-red-700 font-serif">Mohon maaf anda tidak ada dalam panggilan</h5>
 							)}
+							{!showSlider ? (
+								<button className="bg-primary relative w-60 border-2 rounded-full h-12 text-white text-[0.875rem] text-center" onClick={handleLockClick}>
+									🔓 Unlock Invitation
+								</button>
+							) : (
 							<SlideButton onSlide={handleCover} disabled={!name} />
+							)}
 						</div>
 					</div>
 				</div>
