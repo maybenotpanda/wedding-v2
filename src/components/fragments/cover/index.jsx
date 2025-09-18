@@ -16,7 +16,7 @@ const Cover = ({ name, isCover, setIsCover }) => {
 	// ! hooks
 	// * state
 	const [coverAnimation, setCoverAnimation] = useState('')
-	const [isPlaying, setIsPlaying] = useState(true)
+	const [isPlaying, setIsPlaying] = useState(false)
 	const [sound, setSound] = useState(null)
 	const [showSlider, setShowSlider] = useState(false)
 
@@ -61,15 +61,15 @@ const Cover = ({ name, isCover, setIsCover }) => {
 	const handlePlayPause = () => {
 		if (sound) {
 			if (isPlaying) {
-				sound.fade(sound.volume(), 0, 2000)
+				sound.fade(sound.volume(), 0, 1000)
 				setTimeout(() => {
 					sound.pause()
 					sound.volume(1)
-				}, 2000)
+				}, 1000)
 			} else {
 				sound.play()
 				sound.volume(0)
-				sound.fade(0, 1, 2000)
+				sound.fade(0, 1, 1000)
 			}
 			setIsPlaying(!isPlaying)
 		}
@@ -101,7 +101,7 @@ const Cover = ({ name, isCover, setIsCover }) => {
 									🔓 Unlock Invitation
 								</button>
 							) : (
-							<SlideButton onSlide={handleCover} disabled={!name} />
+								<SlideButton onSlide={handleCover} disabled={!name} />
 							)}
 						</div>
 					</div>
