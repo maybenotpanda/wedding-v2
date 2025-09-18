@@ -7,6 +7,9 @@ import { Howl } from 'howler'
 // ** Icons Imports
 import { BsPlayFill, BsFillPauseFill } from 'react-icons/bs'
 
+// ** Styled Imports
+import styled, { keyframes } from 'styled-components'
+
 // ** Assets Imports
 import background from 'assets/images/cover.png'
 import SlideButton from 'components/elements/slide-button'
@@ -19,6 +22,7 @@ const Cover = ({ name, isCover, setIsCover }) => {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [sound, setSound] = useState(null)
 	const [showSlider, setShowSlider] = useState(false)
+	const [animateOut, setAnimateOut] = useState(false)
 
 	// * effect
 	useEffect(() => {
@@ -35,6 +39,12 @@ const Cover = ({ name, isCover, setIsCover }) => {
 	// ! handle
 	const handleLockClick = () => {
 		setShowSlider(true)
+		setAnimateOut(true)
+
+		setTimeout(() => {
+			setShowSlider(true)
+			setAnimateOut(false)
+		}, 400)
 	}
 
 	const handleCover = () => {
@@ -97,11 +107,16 @@ const Cover = ({ name, isCover, setIsCover }) => {
 								<h5 className="text-red-700 font-serif">Mohon maaf anda tidak ada dalam panggilan</h5>
 							)}
 							{!showSlider ? (
-								<button className="bg-primary relative w-60 border-2 rounded-full h-12 text-white text-[0.875rem] text-center" onClick={handleLockClick}>
+								<AnimatedButton
+									className="bg-primary/20 backdrop-blur-md relative w-60 border-2 rounded-full h-12 text-white text-[0.875rem] text-center"
+									onClick={handleLockClick}
+									$animateOut={animateOut}>
 									🔓 Unlock Invitation
-								</button>
+								</AnimatedButton>
 							) : (
-								<SlideButton onSlide={handleCover} disabled={!name} />
+								<SlideWrapper>
+									<SlideButton onSlide={handleCover} disabled={!name} />
+								</SlideWrapper>
 							)}
 						</div>
 					</div>
@@ -124,3 +139,22 @@ const Cover = ({ name, isCover, setIsCover }) => {
 }
 
 export default Cover
+
+// ** Styles
+const fadeOut = keyframes`
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9); }
+`
+
+const fadeIn = keyframes`
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+`
+
+const AnimatedButton = styled.button`
+	animation: ${(props) => (props.$animateOut ? fadeOut : fadeIn)} 0.4s forwards;
+`
+
+const SlideWrapper = styled.div`
+	animation: ${fadeIn} 0.4s forwards;
+`
