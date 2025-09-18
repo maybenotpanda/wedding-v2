@@ -1,18 +1,22 @@
+// ** React Imports
 import React, { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import LocationPage from '../../pages/location'
-import ThankYouPages from '../../pages/thank-you'
+
+// ** Frame Imports
 import Loading from 'components/frame/loading'
 
-const HomePage = lazy(() => import('pages/home'))
+// ** Pages Imports with lazy
+const Home = lazy(() => import('pages/home'))
+const Location = lazy(() => import('pages/location'))
+const ThankYou = lazy(() => import('pages/thank-you'))
 
 const RoutePage = () => {
 	return (
 		<Suspense fallback={<Loading />}>
 			<Routes>
-				<Route path=":slug" element={<HomePage />} />
-				<Route path="/location" element={<LocationPage />} />
-				<Route path='/makasih' element={<ThankYouPages />} />
+				<Route path=":slug" element={<Home />} />
+				<Route path="/location" element={<Location />} />
+				<Route path="/makasih" element={<ThankYou />} />
 				<Route path="*" element={<HomePage />} />
 			</Routes>
 		</Suspense>
