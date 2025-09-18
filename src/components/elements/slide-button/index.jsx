@@ -5,10 +5,13 @@ import React, { useState, useRef } from 'react'
 import { Container, Overlay, Label, Thumb } from './styles'
 
 const SlideButton = ({ onSlide, disabled }) => {
+	// ! hooks
+	// * state
 	const [position, setPosition] = useState(0)
 	const [sliding, setSliding] = useState(false)
 	const containerRef = useRef(null)
 
+	// ! handle
 	const handleStart = () => {
 		if (disabled) return
 		setSliding(true)
@@ -51,14 +54,14 @@ const SlideButton = ({ onSlide, disabled }) => {
 	return (
 		<Container
 			ref={containerRef}
-			className={`bg-primary relative w-60 border-2 ${disabled ? 'opacity-50' : ''}`}
+			className={`bg-primary relative w-60 border-2 rounded-full h-12 ${disabled ? 'opacity-50' : ''}`}
 			onMouseMove={handleMove}
 			onMouseUp={handleEnd}
 			onMouseLeave={handleEnd}
 			onTouchMove={handleMove}
 			onTouchEnd={handleEnd}>
 			<Overlay opacity={1 - progress} blur={progress * 6} />
-			<Label opacity={1 - progress}>{disabled ? 'Not Available' : 'Slide for invitation'}</Label>
+			<Label className='text-white' opacity={1 - progress}>{disabled ? 'Not Available' : 'Slide for invitation'}</Label>
 			<Thumb
 				className="bg-secondary"
 				// sliding={sliding}
