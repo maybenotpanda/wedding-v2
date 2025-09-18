@@ -11,10 +11,10 @@ module.exports = {
     },
 		extend: {
 			colors: {
-				primary: '',
-				secondary: '',
-        background: '',
-        black: '',
+				primary: '#0082A6',
+				secondary: '#D2AC6D',
+        background: '#F1F1EF',
+        black: '#202020',
         white: '#FFF',
 				success: {
           70: "#317159",
