@@ -1,5 +1,5 @@
 // ** React Imports
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 // ** Styled Imports
@@ -26,10 +26,28 @@ const Wishes = (props) => {
 	const errList = useSelector(errorListMessage)
 	const dataList = useSelector(dataListMessage)
 
+	// ! hooks
+	// * state
+	const [localMessages, setLocalMessages] = useState([]);
+
+	// ! handle
 	const handleSubmit = (e) => {
 		const req = { ...e }
 		data(req)
+
+		const newMessage = {
+			name: e.name,
+			message: e.message,
+			createdAt: new Date(),
+		};
+		setLocalMessages((prev) => [newMessage, ...prev]);
 	}
+
+	// ! others
+	const allMessages = [
+		...localMessages,
+		...(dataList?.data || []),
+	];
 
 	return (
 		<div className="grid gap-3 content-start justify-items-center bg-primary py-6">
@@ -66,8 +84,8 @@ const Wishes = (props) => {
 						</FormGroup>
 					</Form>
 					<div className="h-72 lg:h-[20rem] xl:h-[34rem] overflow-y-auto pr-2 scrollbar-hide">
-						{loadList ? 'Loading' : errList ? <p>{errList}</p> : dataList && dataList.data && dataList.data.length > 0 ? (
-							<Message data={dataList.data} />
+						{loadList ? 'Loading' : errList ? <p>{errList}</p> : allMessages.length > 0 ? (
+							<Message data={allMessages} />
 						) : (
 							<div className="flex justify-center h-full items-center">
 								<span className="text-center text-[#545454]">Tidak ada Pesan</span>
