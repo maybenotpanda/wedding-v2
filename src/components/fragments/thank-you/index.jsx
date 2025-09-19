@@ -13,7 +13,7 @@ const ThankYouFragments = () => {
 					Atas Perhatian dan pengertianya, kami mengucapkan banyak terima kasih
 				</h6>
 				<h4 className="text-white" data-aos="fade-up" data-aos-duration="800">
-					Wassalamu'alaiukum Wr. Wb.
+					Wassalamu'alaikum Wr. Wb.
 				</h4>
 			</div>
 			<h1 className="relative  font-header text-secondary" data-aos="fade-up" data-aos-duration="1200">
