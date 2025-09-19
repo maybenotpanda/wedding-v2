@@ -11,7 +11,7 @@ const MainEvent = (props) => {
 			<div className="grid gap-4">
 				<Head
 					title="Wedding Schedule"
-					description="Dan kami bersyukur, dipertemukan allah di waktu terbaik. kini kami menanti hari istimewa kami."
+					description="Dan kami bersyukur, dipertemukan Allah di waktu terbaik. kini kami menanti hari istimewa kami."
 					color="white"
 				/>
 				<CardEvent data={props.data} type={props.type} />

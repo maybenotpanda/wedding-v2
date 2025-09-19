@@ -86,7 +86,7 @@ const AboutUs = () => {
 							Muhammad Fariz Dzuhreza, S.Kom
 						</h4>
 						<p className=" text-[#545454] text-right" data-aos="fade-up-right">
-							Putra Tungal dari Pasangan
+							Putra Tunggal dari Pasangan
 						</p>
 						<h6 className="text-black text-right" data-aos="fade-up-right">
 							Bapak Edi Susanto

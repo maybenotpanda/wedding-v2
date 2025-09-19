@@ -36,6 +36,25 @@ const Cover = ({ name, isCover, setIsCover }) => {
 		}
 	}, [isCover])
 
+	useEffect(() => {
+		const handleVisibilityChange = () => {
+			if (document.hidden) {
+				if (sound && isPlaying) {
+					sound.pause();
+				}
+			} else {
+				if (sound && isPlaying) {
+					sound.play();
+				}
+			}
+		};
+
+		document.addEventListener("visibilitychange", handleVisibilityChange);
+		return () => {
+			document.removeEventListener("visibilitychange", handleVisibilityChange);
+		};
+	}, [sound, isPlaying]);
+
 	// ! handle
 	const handleLockClick = () => {
 		setShowSlider(true)

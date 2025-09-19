@@ -49,6 +49,7 @@ const CardEvent = (props) => {
 							backgroundImage: `url(${background})`
 						}}
 						data-aos="zoom-in-up"
+						data-aos-duration="1500"
 					>
 						<div className="bg-background px-2 flex items-center justify-center w-12" ata-aos="zoom-in-up">
 							<h5 className="font-bold [writing-mode:vertical-rl] rotate-180">{item.name}</h5>
