@@ -20,7 +20,9 @@ const OurStore = () => {
 					<br />
 					<br />
 					Perjalanan kami tentunya tidak selalu mudah.Kami terpisahkan oleh jarak berulang kali, tak terhitung kapan kami
-					dapat berada di tanah yang sama.Mulai dari Palembang - Bandung, lalu Medan - Bandung, Medan - Jakarta, hingga
+					dapat berada di tanah yang sama.
+					<br />
+					Mulai dari Palembang - Bandung, lalu Medan - Bandung, Medan - Jakarta, hingga
 					Lampung - Jakarta, cinta ini diuji oleh waktu dan ruang.
 					<br />
 					Namun, tiap jarak tersebut meyakinkan langkah kami, memperkuat cinta kami, hingga kini kami berada di kota yang
@@ -30,7 +32,7 @@ const OurStore = () => {
 					Setelah sembilan tahun perjalanan panjang melewati banyaknya gelombang, kini kami memulai babak baru, sebuah
 					perjanjian seumur hidup untuk melanjutkan perjalanan bersama.
 					<br />
-					Dengan ridho Allah SWT, dengan membangun keluarga yang sakinah, mawadah, dan warahmah hingga akhir hayat.
+					Dengan ridho Allah SWT, membangun keluarga yang sakinah, mawadah, dan warahmah hingga akhir hayat.
 				</p>
 			</div>
 			<img src={flower} alt='flower' />
